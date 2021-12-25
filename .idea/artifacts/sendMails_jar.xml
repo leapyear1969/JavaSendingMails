@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="sendMails:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/sendMails_jar</output-path>
+    <root id="archive" name="sendMails.jar">
+      <element id="module-output" name="sendMails" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/javax.mail.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
