@@ -14,13 +14,13 @@ import com.sun.mail.smtp.SMTPTransport;
 public class SendMails {
     private static final String SMTP_SERVER = "smtp.partner.outlook.cn";
     private static final String USERNAME = "jason@majun.fun";
-    private static final String PASSWORD = "yourPasswordHere";
+    private static final String PASSWORD = "youpasswordHere";
 
     private static final String EMAIL_FROM = "jason@majun.fun";
-    private static final String EMAIL_TO = "someone@contoso.com";
+    private static final String EMAIL_TO = "test01@majun.fun";
     private static final String EMAIL_TO_CC = "";
 
-    private static final String EMAIL_SUBJECT = "Test Send Email via SMTP";
+    static String EMAIL_SUBJECT = "Test Send Email via SMTP";
     private static final String EMAIL_TEXT = "Hello Java Mail \n ABC123";
 
     public static void main(String[] args) {
@@ -29,6 +29,7 @@ public class SendMails {
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.port", "587"); // default port 25
+        prop.put("mail.smtp.ssl.protocols", "TLSv1.2");//add TLS version for lower javax.mail.JAR
 
         Session sendMailSession = Session.getInstance(prop, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -44,8 +45,9 @@ public class SendMails {
             @Override
             public void run() {
                 try {
-                    // send 10 times
-                    for (int i = 0; i < 10; i++) {
+                    // send 5 times
+                    for (int i = 0; i < 5; i++) {
+                        EMAIL_SUBJECT = EMAIL_SUBJECT+ i;
 
                         // from
                         msg.setFrom(new InternetAddress(EMAIL_FROM));
